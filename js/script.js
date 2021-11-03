@@ -1,3 +1,6 @@
+/* 
+    Fonction pour défiller grace à la nav bar menu.
+*/
 !(function(o, a, i, t) {
     var n = function(t, n) {
         (this.elem = t),
