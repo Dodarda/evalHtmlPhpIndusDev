@@ -1,8 +1,9 @@
 <?php
-
+	// récupération des variables de connexion
 	$idCompte=$_POST['idCompte'];
 	$mdp=$_POST['mdp'];
 
+	// connexion à la base de donnée
 	try
 	{
 		$bdd = new PDO('mysql:host=localhost;dbname=connexion;charset=utf8', 'root', '');
@@ -11,12 +12,12 @@
 	{
 		die('Erreur : '.$e->getMessage());
 	}
-
+	// requete 
 	$req = $bdd->prepare('SELECT mdp FROM compte WHERE identifiant = "'.$idCompte.'"');
 	$req->execute();
 	$mdpbdd = $req->fetch()[0];
 	$req->closeCursor();
-		
+	// vérification entre les identifiants du site et de la BDD + redirection si mauvais mdp 
 	if ($mdp == $mdpbdd){
         echo 'c\'est le bon mot de passe';
 	}
